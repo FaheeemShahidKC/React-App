@@ -1,14 +1,7 @@
-const express = require('express')
-const router = express()
-const bodyParser = require("body-parser")
-
-router.set('view engine', 'ejs');
-router.set('views','./views/user/')
+import express from 'express'
+const admin_route = express.Router()
 
 
 
-router.use(bodyParser.json())
-router.use(bodyParser.urlencoded({extended:true}))
 
-
-module.exports = router
+export default admin_route

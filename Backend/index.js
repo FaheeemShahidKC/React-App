@@ -1,21 +1,33 @@
-require("dotenv").config()
-const mongoose = require("mongoose")
-mongoose.connect(process.env.MONGO_URI).then(()=>{
-    console.log("db...");
-})
+import express from 'express'
+import dotenv from 'dotenv'
+import cors from 'cors'
 
-const path = require('path')
-const express = require('express')
+
+import userRoute from './routes/userRouter.js'
+import adminRoute from './routes/adminRouter.js'
+import connectDB from './config/mongodb.js'
+
+dotenv.config()
+connectDB()
 const app = express()
+const port = process.env.PORT || 5000
 
-app.use(express.static(path.join(__dirname, "public")));
 
-const userRouter = require('./routes/userRouter')
-const adminRouter = require('./routes/adminRouter')
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
-app.use('/',userRouter)
-app.use('/admin',userRouter)
 
-app.listen(8080,()=>{
-    console.log("Server Running...");
-})
+app.use(
+    cors({
+      origin: ["http://localhost:5173"],
+      methods: ["GET", "POST"],
+      credentials: true,
+    })
+);
+
+
+app.use('/',userRoute)
+app.use('/admin',adminRoute)
+
+
+app.listen(port,()=>console.log("server started"))
