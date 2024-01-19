@@ -18,10 +18,6 @@ const userSchema = mongoose.Schema({
     password:{
         type:String,
         required:true
-    },
-    is_Admin:{
-        type:Boolean,
-        required:true
     }
 })
 

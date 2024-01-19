@@ -2,7 +2,6 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 
-
 import userRoute from './routes/userRouter.js'
 import adminRoute from './routes/adminRouter.js'
 import connectDB from './config/mongodb.js'
@@ -30,4 +29,4 @@ app.use('/',userRoute)
 app.use('/admin',adminRoute)
 
 
-app.listen(port,()=>console.log("server started"))
+app.listen(port,()=>console.log(`server started => ${port} `))
