@@ -97,7 +97,7 @@ const addUser = async (req, res) => {
                })
 
                const userData = await data.save()
-               console.log("updated");
+               console.log("added user");
                console.log(userData);
           }
      } catch (error) {
