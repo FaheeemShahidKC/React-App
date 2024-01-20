@@ -17,9 +17,11 @@ export default function Header() {
           <MDBNavbarBrand href='#'></MDBNavbarBrand>
           <MDBNavbarBrand href='#'></MDBNavbarBrand>
           <MDBNavbarBrand href='#'></MDBNavbarBrand>
-          <MDBNavbarBrand href='#'>Navbar</MDBNavbarBrand>
-          <MDBNavbarBrand href='#'>Navbar</MDBNavbarBrand>
-          <MDBNavbarBrand href='#'>Navbar</MDBNavbarBrand>
+          <MDBNavbarBrand href='#'>Home</MDBNavbarBrand>
+          <MDBNavbarBrand href='#'>Profile</MDBNavbarBrand>
+          <MDBNavbarBrand href='#'>Login</MDBNavbarBrand>
+          <MDBNavbarBrand href='#'>Signup</MDBNavbarBrand>
+          <MDBNavbarBrand href='#'>Logout</MDBNavbarBrand>
         </MDBContainer>
       </MDBNavbar>
     </>
