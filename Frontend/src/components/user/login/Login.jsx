@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Button } from 'react-bootstrap';
 import './Login.css'
+import { userLogin } from '../../../api/userApi';
 
 import {
      MDBContainer,
@@ -14,6 +15,20 @@ import {
      from 'mdb-react-ui-kit';
 
 function Login() {
+     const [email, setEmail] = useState()
+     const [password, setPassword] = useState()
+     const [error, setError] = useState()
+
+     const handdleLogin = (e)=>{
+          e.preventDefault()
+
+          const response = userLogin({
+               email, password
+          })
+
+          console.log(response);
+     }
+
      return (
           <MDBContainer className='my-5'>
                <MDBCard>
@@ -29,15 +44,19 @@ function Login() {
                               <MDBCardBody>
                                    <h1 style={{ fontWeight: 'bold' }}>Login</h1>
 
-                                   <MDBInput wrapperClass='mb-4' label='Email address' id='form1' type='email' />
-                                   <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password' />
+                                   <MDBInput onChange={(e)=>{
+                                        setEmail(e.target.value)
+                                   }} wrapperClass='mb-4' label='Email address' id='form1' type='email' />
+                                   <MDBInput  onChange={(e)=>{
+                                        setPassword(e.target.value)
+                                   }} wrapperClass='mb-4' label='Password' id='form2' type='password' />
 
 
-                                   <div className="d-flex justify-content-evenly mx-4 mb-4">
+                                   {/* <div className="d-flex justify-content-evenly mx-4 mb-4">
                                         <a href="!#">Forgot password?</a>
-                                   </div>
-
-                                   <Button className='mb-4 w-100'>Login</Button>
+                                   </div> */}
+                                   <p style={{error}}></p>
+                                   <Button onClick={handdleLogin} className='mb-4 w-100'>Login</Button>
 
 
                               </MDBCardBody>

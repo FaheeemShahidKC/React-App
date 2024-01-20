@@ -9,8 +9,6 @@ function App() {
     <div>
       <LoginPage></LoginPage>
       <SignupPage></SignupPage>
-      <HomePage></HomePage>
-      <ProfilePage></ProfilePage>
     </div>
   )
 }
