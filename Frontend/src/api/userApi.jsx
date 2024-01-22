@@ -16,9 +16,10 @@ const userSignup = async (signupData) => {
 
 const userLogin = async (loginData) => {
      try {
-          console.log('jhgf');
           const fetchedData = await userApi.post('/login', loginData)
+          console.log(fetchedData.data);
           return fetchedData.data
+
      } catch (error) {
           console.log(error.message);
      }

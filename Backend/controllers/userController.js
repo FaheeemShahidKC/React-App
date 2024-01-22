@@ -16,7 +16,7 @@ const signup = async (req, res) => {
                 password: bcryptedPassword
             })
             const userData = await data.save()
-            console.log(userData);
+            res.json({ userData: userData, status: true })
         }
     } catch (error) {
         console.log(error);
@@ -30,6 +30,7 @@ const login = async (req, res) => {
             const match = await bcrypt.compare(req.body.password, userData.password);
             if (match) {
                 console.log("user logged in");
+                res.json({ status: true })
             } else {
                 console.log("wrong password");
             }
@@ -56,7 +57,7 @@ const editProfile = async (req, res) => {
             { new: true }
         )
         console.log(updated);
-        // res.json({ userData: updated, status: true })
+        res.json({ userData: updated, status: true })
     } catch (error) {
         console.log(error.message);
     }

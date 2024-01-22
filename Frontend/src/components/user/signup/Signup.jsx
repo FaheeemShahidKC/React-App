@@ -16,7 +16,7 @@ import {
 
 function Signup() {
 
-     // const navigate = useNavigate()
+     const navigate = useNavigate()
      const [name, setName] = useState()
      const [email, setEmail] = useState()
      const [phone, setPhone] = useState()
@@ -41,6 +41,10 @@ function Signup() {
                const response = await userSignup({
                     name, email, phone, password
                })
+
+               if(response.status){
+                    navigate('/login')
+               }
 
                console.log(response,"iuytrtyu");
 

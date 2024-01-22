@@ -7,15 +7,15 @@ import HomePage from '../pages/user/HomePage.jsx'
 import UserLoginAuth from '../Authentication/UserLoginAuth.jsx'
 import UserLogoutAuth from '../Authentication/UserLogoutAuth.jsx'
 
-function userRoutes() {
+function UserRoutes() {
      return (
           <Routes>
-               <Route path='/' element={<UserLoginAuth><HomePage/></UserLoginAuth>}></Route>
-               <Route path='/login' element={<UserLogoutAuth><LoginPage/></UserLogoutAuth>}></Route>
-               <Route path='/signup' element={<UserLogoutAuth> <SignUpPage /> </UserLogoutAuth>} />
-               <Route path='/profile' element={<UserLoginAuth> <ProfilePage /> </UserLoginAuth>} />
+               <Route path='/' element={<><HomePage /></>} />
+               <Route path='/login' element={<><LoginPage /></>} />
+               <Route path='/signup' element={<> <SignUpPage /> </>} />
+               <Route path='/profile' element={<> <ProfilePage /> </>} />
           </Routes>
      )
 }
 
-export default userRoutes
+export default UserRoutes

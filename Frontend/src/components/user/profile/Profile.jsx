@@ -2,6 +2,8 @@ import React from 'react'
 import './Profile.css'
 
 function Profile() {
+  
+  
   return (
     <div>
       <section className="vh-100" style={{ backgroundColor: "#eaf4fc" }}>

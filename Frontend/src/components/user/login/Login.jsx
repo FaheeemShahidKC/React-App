@@ -13,20 +13,27 @@ import {
      MDBInput
 }
      from 'mdb-react-ui-kit';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
      const [email, setEmail] = useState()
      const [password, setPassword] = useState()
      const [error, setError] = useState()
+     const navigate = useNavigate()
 
-     const handdleLogin = (e)=>{
+     const handdleLogin = async (e)=>{
           e.preventDefault()
 
-          const response = userLogin({
+          console.log("aaaaaaaaaaaaaa");
+          const response = await userLogin({
                email, password
           })
 
-          console.log(response);
+          console.log(response.status);
+
+          if(response.status){
+               navigate('/')
+          }
      }
 
      return (

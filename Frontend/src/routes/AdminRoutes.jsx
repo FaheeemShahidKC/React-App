@@ -6,7 +6,7 @@ import LoginPage from '../pages/admin/LoginPage.jsx'
 // import EditUserPage from '../pages/Admin/EditUserPage.jsx'
 // import AddUserPage from '../pages/Admin/AddUserPage.jsx'
 
-function UserRoutes() {
+function AdminRoutes() {
      return (
           <Routes>
                {/* <Route path='/dashboard' element={<AdminLoginAuth> <DashboardPage /> </AdminLoginAuth>} /> */}
@@ -16,5 +16,5 @@ function UserRoutes() {
           </Routes>
      )
 }
-
-export default UserRoutes
+               
+export default AdminRoutes
