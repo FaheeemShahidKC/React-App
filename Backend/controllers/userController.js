@@ -30,7 +30,7 @@ const login = async (req, res) => {
             const match = await bcrypt.compare(req.body.password, userData.password);
             if (match) {
                 console.log("user logged in");
-                res.json({ status: true })
+                res.json({ userData: userData, status: true })
             } else {
                 console.log("wrong password");
             }
@@ -63,8 +63,21 @@ const editProfile = async (req, res) => {
     }
 }
 
+const loadProfile = async (req, res) => {
+    try {
+        const userData = await User.findOne({ _id: req.body.id })
+        if(userData){
+            res.json({userData:userData})
+        }else{
+            console.log("no userData");
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 export {
     login,
     signup,
-    editProfile
+    editProfile,
+    loadProfile
 }

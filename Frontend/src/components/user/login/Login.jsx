@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './Login.css'
 import { userLogin } from '../../../api/userApi';
@@ -14,26 +14,34 @@ import {
 }
      from 'mdb-react-ui-kit';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUserDetails } from '../../../store/slice/Slice';
 
 function Login() {
      const [email, setEmail] = useState()
      const [password, setPassword] = useState()
      const [error, setError] = useState()
      const navigate = useNavigate()
+     const dispath = useDispatch()
 
-     const handdleLogin = async (e)=>{
+     const handdleLogin = async (e) => {
           e.preventDefault()
 
-          console.log("aaaaaaaaaaaaaa");
-          const response = await userLogin({
+          const loginResponse = await userLogin({
                email, password
           })
 
-          console.log(response.status);
-
-          if(response.status){
+          if (loginResponse.status) {
+               localStorage.setItem('token', loginResponse.userData._id)
+               dispath(setUserDetails({
+                    id: loginResponse.userData._id,
+                    name: loginResponse.userData.name,
+                    email: loginResponse.userData.email,
+                    image: loginResponse.userData.image,
+                    phone: loginResponse.userData.phone,
+               }))
                navigate('/')
-          }
+          }          
      }
 
      return (
@@ -51,10 +59,10 @@ function Login() {
                               <MDBCardBody>
                                    <h1 style={{ fontWeight: 'bold' }}>Login</h1>
 
-                                   <MDBInput onChange={(e)=>{
+                                   <MDBInput onChange={(e) => {
                                         setEmail(e.target.value)
                                    }} wrapperClass='mb-4' label='Email address' id='form1' type='email' />
-                                   <MDBInput  onChange={(e)=>{
+                                   <MDBInput onChange={(e) => {
                                         setPassword(e.target.value)
                                    }} wrapperClass='mb-4' label='Password' id='form2' type='password' />
 
@@ -62,7 +70,7 @@ function Login() {
                                    {/* <div className="d-flex justify-content-evenly mx-4 mb-4">
                                         <a href="!#">Forgot password?</a>
                                    </div> */}
-                                   <p style={{error}}></p>
+                                   <p style={{ error }}></p>
                                    <Button onClick={handdleLogin} className='mb-4 w-100'>Login</Button>
 
 
